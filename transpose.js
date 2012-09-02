@@ -1,8 +1,9 @@
 // Transpose Chords
 // TODO: fix bemole missing
 
+// Diese rules
 // Step to next (upper) halftone
-var abcdefgh_u = {
+var abcdefgh_ud = {
 	 'A' : 'A♯',
 	 'H' : 'C',
 	 'C' : 'C♯',
@@ -15,16 +16,11 @@ var abcdefgh_u = {
 	'F♯' : 'G',
 	'G♯' : 'A',
 	'A♯' : 'H',
-	'D♭' : 'D',
-	'E♭' : 'E',
-	'G♭' : 'G',
-	'A♭' : 'A',
-	'H♭' : 'H'
 };
 
 
 // Step to prev (lower) halftone
-var abcdefgh_d = {
+var abcdefgh_dd = {
 	 'A' : 'G♯',
 	 'H' : 'A♯',
 	 'C' : 'H',
@@ -37,6 +33,35 @@ var abcdefgh_d = {
 	'A♯' : 'A',
 	'F♯' : 'F',
 	'G♯' : 'G',
+};
+
+// Bemol rules
+// Step to next (upper) halftone
+var abcdefgh_ub = {
+	 'A' : 'H♭',
+	 'H' : 'C',
+	 'C' : 'D♭',
+	 'D' : 'E♭',
+	 'E' : 'F',
+	 'F' : 'G♭',
+	 'G' : 'A♭',
+	'D♭' : 'D',
+	'E♭' : 'E',
+	'G♭' : 'G',
+	'A♭' : 'A',
+	'H♭' : 'H'
+};
+
+
+// Step to prev (lower) halftone
+var abcdefgh_db = {
+	 'A' : 'A♭',
+	 'H' : 'H♭',
+	 'C' : 'H',
+	 'D' : 'D♭',
+	 'E' : 'E♭',
+	 'F' : 'E',
+	 'G' : 'G♭',
 	'D♭' : 'C',
 	'E♭' : 'D',
 	'G♭' : 'F',
@@ -44,18 +69,54 @@ var abcdefgh_d = {
 	'H♭' : 'A'
 };
 
-function abcdefgh_up(){
-  var chords = document.getElementsByClassName("guitarchord");
+
+var diese_list = [ "C♯", "D♯", "A♯", "F♯", "G♯" ];
+var bemol_list = [ "D♭", "E♭", "G♭", "A♭", "H♭" ];
+
+function convert_accords(chords, cnv)
+{
   for (var c in chords) {
-    chords[c].innerHTML =  abcdefgh_u[ chords[c].innerHTML ];
+    if (chords[c].innerHTML == undefined)
+      continue;
+    if ( chords[c].innerHTML in cnv)
+      chords[c].innerHTML = cnv[ chords[c].innerHTML ];
+    else {
+      //chords[c].innerHTML = '_E-'+chords[c].innerHTML+'-E_';
+      console.log('Missed '+chords[c].innerHTML);
+    }
   }
 }
 
-function abcdefgh_down(){
+function abcdefgh_up()
+{
   var chords = document.getElementsByClassName("guitarchord");
+
+  // Определим текущие знаки при ключе
+  var cnv = abcdefgh_ud;
   for (var c in chords) {
-    chords[c].innerHTML =  abcdefgh_d[ chords[c].innerHTML ];
+    if ( bemol_list.indexOf(chords[c].innerHTML) !== -1 ) {
+      cnv = abcdefgh_ub;
+      break;
+    }
   }
+
+  convert_accords(chords, cnv);
+}
+
+function abcdefgh_down()
+{
+  var chords = document.getElementsByClassName("guitarchord");
+  // Определим текущие знаки при ключе
+  var cnv = abcdefgh_db;
+  for (var c in chords) {
+    //if (chords[c].innerHTML in diese_list) {
+    if ( diese_list.indexOf(chords[c].innerHTML) !== -1 ) {
+      cnv = abcdefgh_dd;
+      break;
+    }
+  }
+
+  convert_accords(chords, cnv);
 }
 
 function enable_floatchords(){
