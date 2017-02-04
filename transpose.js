@@ -16,6 +16,12 @@ var abcdefgh_ud = {
 	'F♯' : 'G',
 	'G♯' : 'A',
 	'A♯' : 'H',
+// for incorrect cases
+	'D♭' : 'D',
+	'E♭' : 'E',
+	'G♭' : 'G',
+	'A♭' : 'A',
+	'H♭' : 'H'
 };
 
 
@@ -33,6 +39,12 @@ var abcdefgh_dd = {
 	'A♯' : 'A',
 	'F♯' : 'F',
 	'G♯' : 'G',
+// for incorrect cases
+	'D♭' : 'C',
+	'E♭' : 'D',
+	'G♭' : 'F',
+	'A♭' : 'G',
+	'H♭' : 'A'
 };
 
 // Bemol rules
@@ -49,7 +61,13 @@ var abcdefgh_ub = {
 	'E♭' : 'E',
 	'G♭' : 'G',
 	'A♭' : 'A',
-	'H♭' : 'H'
+	'H♭' : 'H',
+// for incorrect cases
+	'C♯' : 'D',
+	'D♯' : 'E',
+	'F♯' : 'G',
+	'G♯' : 'A',
+	'A♯' : 'H',
 };
 
 
@@ -66,7 +84,13 @@ var abcdefgh_db = {
 	'E♭' : 'D',
 	'G♭' : 'F',
 	'A♭' : 'G',
-	'H♭' : 'A'
+	'H♭' : 'A',
+// for incorrect cases
+	'C♯' : 'C',
+	'D♯' : 'D',
+	'A♯' : 'A',
+	'F♯' : 'F',
+	'G♯' : 'G',
 };
 
 
