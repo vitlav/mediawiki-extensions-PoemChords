@@ -13,7 +13,8 @@
 # include("extensions/PoemChords.php");
 # to the bottom of your LocalSettings.php
 #
-# To use, put some text between <poem></poem> tags
+# To use, put poetry text in {{PoemChords|Name|Text text|date}}, add follow template for it:
+# https://soulibre.ru/index.php?title=Template:PoemChords
 #
 # For more information see its page at
 # http://meta.wikimedia.org/wiki/Poem_Extension
@@ -26,7 +27,7 @@ if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'PoemChords',
 	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg', 'Vitaly Lipatov' ),
-	'url'            => 'http://www.mediawiki.org/wiki/Extension:PoemChords',
+	'url'            => 'https://soulibre.ru/index.php?title=Template:PoemChords',
 	'svn-date'       => '$LastChangedDate: 2008-12-20 09:32:47 +0000 (Sat, 20 Dec 2008) $',
 	'svn-revision'   => '$LastChangedRevision: 44839 $',
 	'description'    => 'Adds <tt>&lt;poemchords&gt;</tt> tag for poem with guitar chords formatting',

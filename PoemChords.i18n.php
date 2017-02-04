@@ -422,7 +422,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'poem-desc' => 'Добавляет тег <tt>&lt;poem&gt;</tt> для форматирования стихов',
+	'poem-desc' => 'Добавляет тег <tt>&lt;PoemChords&gt;</tt> для форматирования текстов песен с аккордами',
 );
 
 /** Yakut (Саха тыла)
