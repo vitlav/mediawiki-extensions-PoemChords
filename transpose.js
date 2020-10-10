@@ -161,12 +161,12 @@ function enable_floatchords(){
       ct = ct + at[c] + '<br>';
   }
 
-  var po = $j('#floatchordsanchor').position();
+  var po = $j('#floatchordsanchor').offset();
 
   $j('#floatchords').html(ct);
   $j('#floatchords').makeFloat({
-      x: po.left,
-      y: po.top+10
+      x: po.left-150,
+      y: 150
   });
 }
 

@@ -1,0 +1,27 @@
+{
+	"name": "PoemChords",
+	"author": [
+		"Nikola Smolenski",
+		"Brion Vibber",
+		"Steve Sanbeg",
+		"Vitaly Lipatov"
+	],
+	"license-name": "CC0-1.0",
+	"url": "https://soulibre.ru/index.php?title=Template:PoemChords",
+	"descriptionmsg": "poemchords-desc",
+	"type": "parserhook",
+	"MessagesDirs": {
+		"PoemChords": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"ParserFirstCallInit": [
+			"PoemChords::init"
+		]
+	},
+	"AutoloadClasses": {
+		"PoemChords": "includes/PoemChords.php"
+	},
+	"manifest_version": 1
+}
