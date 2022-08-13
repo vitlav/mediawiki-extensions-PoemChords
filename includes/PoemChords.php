@@ -13,7 +13,7 @@
 
 class PoemChords {
 	/**
-	 * Bind the renderPoem function to the <poem> tag
+	 * Bind the renderPoemChords function to the <poemchords> tag
 	 * @param Parser $parser
 	 */
 	public static function init( Parser $parser ) {
@@ -106,6 +106,10 @@ protected static function fancyChords0( $text )
 
 		$tag = $parser->insertStripItem( "<br />" );
 
+		// load javascript
+		$parserOutput = $parser->getOutput();
+		$parserOutput->addModules( 'ext.PoemChords' );
+
 		// replace colons with indented spans
 		$text = preg_replace_callback( '/^(:+)(.+)$/m', [ self::class, 'indentVerse' ], $in );
 
@@ -142,21 +146,6 @@ protected static function fancyChords0( $text )
 	// set in MediaWiki:Common.css div.poemchords
 	//$attribs['style'] = 'font-size:120%;font-family:monospace';
 
-	global $wgScriptPath, $wgJsMimeType;
-// FIXME: более глобально
-	$jsFile = htmlspecialchars( "$wgScriptPath/extensions/PoemChords/transpose.js" );
-	$jsFile1 = htmlspecialchars( "$wgScriptPath/extensions/PoemChords/jquery.floatobject.js" );
-	$jsFile2 = htmlspecialchars( "//eterfund.ru/js/jquery/1.6.4/jquery.min.js" );
-
-	$newscript = sprintf (<<<EOT
-<script type="$wgJsMimeType" src="$jsFile"></script>
-<script type="$wgJsMimeType" src="$jsFile2"></script>
-<script type="$wgJsMimeType" src="$jsFile1"></script>
-EOT
-	);
-	$text = $newscript.$text;
-
-
 		return Html::rawElement( 'div', $attribs, $newline . trim( $text ) . $newline );
 	}
 
@@ -185,5 +174,10 @@ EOT
 		// @todo Should this really be raw?
 		return Html::rawElement( 'span', $attribs, $m[2] );
 	}
+
+  public static function onBeforePageDisplay(&$wgOut, &$sk) {
+//error_log("Hello");
+      $wgOut->addModules('ext.PoemChords');
+  }
 }
 

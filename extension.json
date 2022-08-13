@@ -10,18 +10,31 @@
 	"url": "https://soulibre.ru/index.php?title=Template:PoemChords",
 	"descriptionmsg": "poemchords-desc",
 	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.34.0"
+	},
 	"MessagesDirs": {
 		"PoemChords": [
 			"i18n"
 		]
 	},
 	"Hooks": {
-		"ParserFirstCallInit": [
-			"PoemChords::init"
-		]
+		"ParserFirstCallInit": "PoemChords::init",
+		"BeforePageDisplay": "PoemChords::onBeforePageDisplay"
 	},
 	"AutoloadClasses": {
 		"PoemChords": "includes/PoemChords.php"
 	},
-	"manifest_version": 1
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources"
+	},
+	"ResourceModules": {
+		"ext.PoemChords": {
+			"scripts": [
+				"jquery.floatobject.js",
+				"transpose.js"
+			]
+		}
+	},
+	"manifest_version": 2
 }

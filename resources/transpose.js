@@ -1,3 +1,5 @@
+(function(mw, $, window) {
+
 // Transpose Chords
 // TODO: fix bemole missing
 
@@ -111,7 +113,7 @@ function convert_accords(chords, cnv)
   }
 }
 
-function abcdefgh_up()
+mw.abcdefgh_up = function ()
 {
   var chords = document.getElementsByClassName("guitarchord");
 
@@ -127,7 +129,7 @@ function abcdefgh_up()
   convert_accords(chords, cnv);
 }
 
-function abcdefgh_down()
+mw.abcdefgh_down = function ()
 {
   var chords = document.getElementsByClassName("guitarchord");
   // Определим текущие знаки при ключе
@@ -143,7 +145,7 @@ function abcdefgh_down()
   convert_accords(chords, cnv);
 }
 
-function enable_floatchords(){
+mw.enable_floatchords = function(){
   //var chords = document.getElementsByClassName("fullguitarchord");
   var ct = '';
   //for (var c in chords) {
@@ -161,12 +163,13 @@ function enable_floatchords(){
       ct = ct + at[c] + '<br>';
   }
 
-  var po = $j('#floatchordsanchor').offset();
+  var po = jQuery('#floatchordsanchor').offset();
 
-  $j('#floatchords').html(ct);
-  $j('#floatchords').makeFloat({
+  jQuery('#floatchords').html(ct);
+  jQuery('#floatchords').makeFloat({
       x: po.left-150,
       y: 150
   });
 }
 
+}(mediaWiki, jQuery, window));
