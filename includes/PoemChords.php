@@ -11,6 +11,11 @@
  * @author Nikola Smolenski <smolensk@eunet.yu>
  */
 
+use MediaWiki\Html\Html;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
+use MediaWiki\Parser\Sanitizer;
+
 class PoemChords {
 	/**
 	 * Bind the renderPoemChords function to the <poemchords> tag
@@ -108,7 +113,7 @@ protected static function fancyChords0( $text )
 
 		// load javascript
 		$parserOutput = $parser->getOutput();
-		$parserOutput->addModules( 'ext.PoemChords' );
+		$parserOutput->addModules( [ 'ext.PoemChords' ] );
 
 		// replace colons with indented spans
 		$text = preg_replace_callback( '/^(:+)(.+)$/m', [ self::class, 'indentVerse' ], $in );
