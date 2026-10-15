@@ -7,6 +7,7 @@
 		"Vitaly Lipatov"
 	],
 	"license-name": "CC0-1.0",
+	"version": "1.0",
 	"url": "https://soulibre.ru/index.php?title=Template:PoemChords",
 	"descriptionmsg": "poemchords-desc",
 	"type": "parserhook",
