@@ -180,9 +180,11 @@ protected static function fancyChords0( $text )
 		return Html::rawElement( 'span', $attribs, $m[2] );
 	}
 
-  public static function onBeforePageDisplay(&$wgOut, &$sk) {
-//error_log("Hello");
-      $wgOut->addModules('ext.PoemChords');
-  }
+	/**
+	 * @param \MediaWiki\Output\OutputPage $out
+	 * @param Skin $skin
+	 */
+	public static function onBeforePageDisplay( $out, $skin ) {
+		$out->addModules( 'ext.PoemChords' );
+	}
 }
-
